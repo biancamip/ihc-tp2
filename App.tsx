@@ -1,12 +1,43 @@
-import React from 'react';
-import { SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import {
+  Button,
+  SafeAreaView,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from 'react-native';
+
+type AppState =
+  | { tag: 'input'; message: string }
+  | { tag: 'display'; message: string };
 
 const App = () => {
+  const [state, setState] = useState<AppState>({ tag: 'input', message: '' });
+
+  const sendMessage = () => {
+    setState({ tag: 'display', message: state.message });
+  };
+
   return (
     <SafeAreaView>
       <ScrollView contentInsetAdjustmentBehavior="automatic">
         <View style={styles.sectionContainer}>
-          <Text style={styles.sectionTitle}>Atividade 1</Text>
+          <Text style={styles.sectionTitle}>Atividade 1.2</Text>
+          {state.tag === 'input' ? (
+            <>
+              <TextInput
+                style={styles.textInput}
+                value={state.message}
+                onChangeText={value => setState({ ...state, message: value })}
+                onSubmitEditing={sendMessage}
+              />
+              <Button title="Enviar" onPress={sendMessage} />
+            </>
+          ) : (
+            <Text style={{ fontSize: 16 }}>{state.message}</Text>
+          )}
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -29,6 +60,7 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 24,
     fontWeight: '600',
+    marginBottom: 8,
   },
   sectionDescription: {
     marginTop: 8,
