@@ -6,7 +6,7 @@ const App = () => {
     <SafeAreaView>
       <ScrollView contentInsetAdjustmentBehavior="automatic">
         <View style={styles.sectionContainer}>
-          <Text style={styles.sectionTitle}>Atividade 1</Text>
+          <Text style={styles.sectionTitle}>Atividade 2</Text>
         </View>
       </ScrollView>
     </SafeAreaView>
