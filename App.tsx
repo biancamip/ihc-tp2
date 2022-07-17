@@ -1,4 +1,4 @@
-import React, {type PropsWithChildren} from 'react';
+import React from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -11,30 +11,24 @@ import {
 const App = () => {
   return (
     <SafeAreaView>
-      <StatusBar />
       <ScrollView contentInsetAdjustmentBehavior="automatic">
-        <View>
-          <Section title="Atividade 1"></Section>
+        <View style={styles.sectionContainer}>
+          <Text style={styles.sectionTitle}>Atividade 1</Text>
         </View>
       </ScrollView>
     </SafeAreaView>
   );
 };
 
-const Section: React.FC<
-  PropsWithChildren<{
-    title: string;
-  }>
-> = ({children, title}) => {
-  return (
-    <View style={styles.sectionContainer}>
-      <Text style={[styles.sectionTitle]}>{title}</Text>
-      <Text style={[styles.sectionDescription]}>{children}</Text>
-    </View>
-  );
-};
-
 const styles = StyleSheet.create({
+  textInput: {
+    height: 40,
+    marginTop: 4,
+    marginBottom: 4,
+    borderWidth: 1,
+    borderColor: 'grey',
+    padding: 10,
+  },
   sectionContainer: {
     marginTop: 32,
     paddingHorizontal: 24,
